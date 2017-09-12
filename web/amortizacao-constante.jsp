@@ -53,10 +53,8 @@
               <br>
             
              <%//if(request.getParameter("capital") != null){
-                 double capital=0, juros=0, parcela=0; 
-                int periodo = 0; 
-                             
-                
+                 double capital = 0, juros=0, parcela=2; 
+                int periodo = 1;                 
                try{ 
                 capital = Double.parseDouble(request.getParameter("capital"));
                 juros = Double.parseDouble(request.getParameter("juros"));
@@ -67,39 +65,41 @@
                
                 
                }catch(Exception e){
-                   
+                       
                }
                
-                double prestacaoR[] = new double[periodo+1];
-                double jurosR[] = new double[periodo+1];
-                double saldo[] = new double[periodo+1];
+                double prestacaoR[] = new double[periodo];
+                double jurosR[] = new double[periodo];
+                double saldo[] = new double[periodo];
                 saldo[0]=capital;
                 
-                for (int i = 1 ; i <= periodo ; i++){
-                    jurosR[i] = saldo[i-1]*juros;
-                    prestacaoR[i] = parcela+jurosR[i];
-                    saldo[i]=saldo[i-1]-parcela;
-}
-             
-             
+                for (int i = 0 ; i < periodo ; i++){
+                    if(i==0){
+                        jurosR[i] = saldo[i]*juros;
+                        prestacaoR[i] = parcela+jurosR[i];
+                        saldo[i]=saldo[i]-parcela;
+                    }else{
+                        jurosR[i] = saldo[i-1]*juros;
+                        prestacaoR[i] = parcela+jurosR[i];
+                        saldo[i]=saldo[i-1]-parcela;
+                    }
+                    
+                    
+                }  
         %>
             
         <table class="table table-striped">
             <tr><th>Periodo</th><th>Prestação</th><th>Juros</th><th>Amortização</th><th>Saldo Devedor</th></tr>
             <tr><td>0</td><td>   </td><td>   </td><td>   </td><td><%=capital%></td></tr>
             
-            <%for(int i = 1 ; i <= periodo ; i++){
+            <% for(int i = 0; i < periodo; i++){
             %>
-            <tr><td><%=i%></td><td><%=String.format("%.2f", prestacaoR[i])%></td><td><%=String.format("%.2f", jurosR[i])%></td><td><%=String.format("%.2f", parcela)%></td><td><%=String.format("%.2f", saldo[i])%></td></tr>
-            
-            
+            <tr><td><%=i+1%></td><td><%=String.format("%.2f", prestacaoR[i])%></td><td><%=String.format("%.2f", jurosR[i])%></td><td><%=String.format("%.2f", parcela)%></td><td><%=String.format("%.2f", saldo[i])%></td></tr>
+                    
             <%}%>
-            
-           
-           
+                    
         </table>
-            
-        
+              
           </div>
         </div>
             <%@include file="WEB-INF/jspf/footer.jspf" %> 

@@ -22,11 +22,18 @@
             int juros = 0;
             int meses = 0;
         %>
+        <div class="container">
+            <br>
+            <br>
+            <br>
+            <h1 id="amortizacao">Amortização Americana</h1>
+            <div class="jumbotron">
         <form>
-            Digite o valor total do empréstimo:<input type="number" name="devedor" value="<%=devedor%>"/>
-            Digite a porcentagem de juros ao mês:<input type="number" name="juros" value="<%=juros%>"/>
-            Digite o prazo total em meses:<input type="number" name="meses" value="<%=meses%>"/> 
+            Valor do empréstimo:<input type="number" name="devedor" value="<%=devedor%>"/>
+            Juros (%a.m.):<input type="number" name="juros" value="<%=juros%>"/>
+            Prazo total em meses:<input type="number" name="meses" value="<%=meses%>"/> 
             <input type="submit" name="btEnviar" value="Enviar"/>
+            <br>
         </form>
         <%if (devedor > 0 || juros > 0 || meses > 0){
             devedor = Integer.parseInt(request.getParameter("devedor"));
@@ -43,6 +50,8 @@
         <%}else {%>
             <script>alert('Dados inválidos. Digite apenas números positivos!');</script>
         <%}%>
+        </div>
+        </div>
         <%@include file="WEB-INF/jspf/footer.jspf" %>
     </body>
 </html>

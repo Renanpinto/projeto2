@@ -18,8 +18,8 @@
     <body>
         <%@include file="WEB-INF/jspf/menu.jspf" %>
         <%
-            int devedor = 0;
-            int juros = 0;
+            double devedor = 0;
+            double juros = 0;
             int meses = 0;
         %>
         <div class="container">
@@ -29,26 +29,31 @@
             <h1 id="amortizacao">Amortização Americana</h1>
             <div class="jumbotron">
         <form>
-            Valor do empréstimo:<input type="number" name="devedor" value="<%=devedor%>"/>
-            Juros (%a.m.):<input type="number" name="juros" value="<%=juros%>"/>
+            Valor do empréstimo:<input type="number" name="devedor" value="<%=devedor%>" step="0.01"/>
+            Juros (%a.m.):<input type="number" name="juros" value="<%=juros%>" step="0.01"/>
             Prazo total em meses:<input type="number" name="meses" value="<%=meses%>"/> 
             <input type="submit" name="btEnviar" value="Enviar"/>
             <br>
         </form>
-        <%if (devedor > 0 || juros > 0 || meses > 0){
-            devedor = Integer.parseInt(request.getParameter("devedor"));
-            juros = Integer.parseInt(request.getParameter("juros"));
-            meses = Integer.parseInt(request.getParameter("meses"));
+        <%
+            try{
+                devedor = Double.parseDouble(request.getParameter("devedor"));
+                juros = Double.parseDouble(request.getParameter("juros"))*devedor/100;
+                meses = Integer.parseInt(request.getParameter("meses"));
         %>
         <hr/>
         <table>
             <tr><td>Meses</td><td>Saldo Devedor</td><td>Amortização</td><td>Juros</td><td>Prestação</td></tr>
-            <%for (int i=0;i<=meses;i++){%>
-                <tr><td><%=i%></td><td><%=devedor%></td><td><%=devedor%></td><td><%=(devedor*juros)/100%></td><td><%=(devedor*juros)/100%></td></tr>
+            <tr><td>0</td><td><%=devedor%></td><td>-</td><td>-</td><td>-</td></tr>
+            <%for (int i=1;i<=meses-1;i++){%>
+                <tr><td><%=i%></td><td><%=devedor%></td><td><%=devedor%></td><td><%=juros%></td><td><%=juros%></td></tr>
             <%}%>
+            <tr><td><%=meses%></td><td>-</td><td><%=devedor%></td><td><%=juros%></td><td><%=juros+devedor%></td></tr>
+            <tr><td>Total</td><td>-</td><td><%=devedor%></td><td><%=juros*meses%></td><td><%=juros*meses+devedor%></td></tr>
         </table>
-        <%}else {%>
-            <script>alert('Dados inválidos. Digite apenas números positivos!');</script>
+        <%}
+        catch (Exception ex) {%>
+            <!--<script>alert('Dados inválidos. Digite apenas números positivos!');</script>-->
         <%}%>
         </div>
         </div>

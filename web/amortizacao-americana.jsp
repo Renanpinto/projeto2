@@ -53,7 +53,7 @@
         </table>
         <%}
         catch (Exception ex) {%>
-            <!--<script>alert('Dados inválidos. Digite apenas números positivos!');</script>-->
+            <script>alert('Dados inválidos. Digite apenas números positivos!');</script>
         <%}%>
         </div>
         </div>

@@ -41,31 +41,30 @@
           <div class="jumbotron">
         
         
-        
+        <% double capital = 0 ; double juros = 0; int mes = 2; 
+           double parcela = 0 ; %>
         <form>
             <div style="text-align: center">
             Capital:
-            <input type="text" name="capital" value=""/>
+            <input type="text" name="capital" value="" required="">
             Juros (%a.m):
-            <input type="text" name="juros" value=""/>
+            <input type="text" name="juros" value="" required=""/>
             Meses:
-            <input type="text" name="mes" value=""/>
+            <input type="text" name="mes" value="" required=""/>
             <input type="submit" name="botao"/>
             </div>
             <br>
         </form>
         
-        <% double capital = 0 ; double juros = 0; int mes = 2; 
-           double parcela = 0 ;
+            <%
+                if (request.getParameter("capital")!= null && request.getParameter("juros")!=null && request.getParameter("mes") !=null){
                try{ 
             capital = Double.parseDouble(request.getParameter("capital"));
             juros = Double.parseDouble(request.getParameter("juros"));
             mes = Integer.parseInt(request.getParameter("mes"));
             
             parcela = capital/((1-(Math.pow((1 + (juros/100)),-mes)))/(juros/100));
-               }catch(Exception e){
-                       
-               }
+               
                
            
            double capitalR [] = new double[mes+1];
@@ -96,7 +95,9 @@
             <tr><td><%=x%></td><td><%=String.format("%.2f", capitalR[x])%></td><td><%=String.format("%.2f", amortizacao[x])%></td><td><%=String.format("%.2f", jurosR[x])%></td><td><%=String.format("%.2f", parcela)%></td></tr>
             
             
-            <%}%>
+            <%}}catch(Exception ex){
+                 out.println("<h2>Parametros Invalidos</h2>");    
+               }}%>
         </table>
           </div>
         </div>

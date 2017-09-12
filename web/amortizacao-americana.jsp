@@ -28,10 +28,10 @@
             <br>
             <h1 id="amortizacao">Amortização Americana</h1>
             <div class="jumbotron">
-        <form>
-            Valor do empréstimo:<input type="number" name="devedor" value="<%=devedor%>" step="0.01"/>
-            Juros (%a.m.):<input type="number" name="juros" value="<%=juros%>" step="0.01"/>
-            Prazo total em meses:<input type="number" name="meses" value="<%=meses%>"/> 
+        <form style="text-align: center">
+            Valor do empréstimo:<input type="number" name="devedor" value="<%=devedor%>" required step="0.01"/>
+            Juros (%a.m.):<input type="number" name="juros" value="<%=juros%>" required step="0.01"/>
+            Prazo total em meses:<input type="number" name="meses" required value="<%=meses%>"/> 
             <input type="submit" name="btEnviar" value="Enviar"/>
             <br>
         </form>
@@ -42,18 +42,17 @@
                 meses = Integer.parseInt(request.getParameter("meses"));
         %>
         <hr/>
-        <table>
-            <tr><td>Meses</td><td>Saldo Devedor</td><td>Amortização</td><td>Juros</td><td>Prestação</td></tr>
+        <table class="table table-striped">
+            <tr><th>Meses</th><th>Saldo Devedor</th><th>Amortização</th><th>Juros</th><th>Prestação</th></tr>
             <tr><td>0</td><td><%=devedor%></td><td>-</td><td>-</td><td>-</td></tr>
             <%for (int i=1;i<=meses-1;i++){%>
-                <tr><td><%=i%></td><td><%=devedor%></td><td><%=devedor%></td><td><%=juros%></td><td><%=juros%></td></tr>
+                <tr><td><%=i%></td><td><%=devedor%></td><td>-</td><td><%=juros%></td><td><%=juros%></td></tr>
             <%}%>
             <tr><td><%=meses%></td><td>-</td><td><%=devedor%></td><td><%=juros%></td><td><%=juros+devedor%></td></tr>
             <tr><td>Total</td><td>-</td><td><%=devedor%></td><td><%=juros*meses%></td><td><%=juros*meses+devedor%></td></tr>
         </table>
         <%}
         catch (Exception ex) {%>
-            <script>alert('Dados inválidos. Digite apenas números positivos!');</script>
         <%}%>
         </div>
         </div>

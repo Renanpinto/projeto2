@@ -29,25 +29,30 @@ h1,h2,h3,h4,h5,h6 {
   }
 
   header{
-    background-image: url(../img/header2.jpg);
+    background-image: url(../img/header.jpg);
     background-repeat: no-repeat;
   
   background-position: center center;
   background-size: cover;
   text-align: center;
-  color: lightgrey;
+ 
   padding-top: 200px;
     padding-bottom: 200px;
+   
   }
   
   
-   header .titulo2 {
+    header .titulo2  {
       font-size: 40px;
       font-style: italic;
       line-height: 40px;
       margin-bottom: 25px;
-      font-family: 'Droid Serif', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+      font-family: 'Droid Serif', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #FFFFFF;
+    font-weight: bold;
+   }
     header .titulo {
+        color: #FFEEEE;
       font-size: 70px;
       font-weight: 600;
       margin-bottom: 50px;
@@ -91,3 +96,5 @@ ul.social-buttons {
      #amortizacao{
          text-align: center;
      }
+     
+     

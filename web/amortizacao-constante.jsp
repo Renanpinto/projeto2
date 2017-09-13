@@ -32,6 +32,8 @@
         <title>Amortização Constante</title>
     </head>
     <body>
+        <%double capital = 0, juros=0, parcela=2, j=0, p=0; 
+                int periodo = 1;  %>
         <!--MENU-->
         <%@include file="WEB-INF/jspf/menu.jspf" %>
         <div class="container">
@@ -52,10 +54,10 @@
           </form>
               <br>
             
-             <%//if(request.getParameter("capital") != null){
-                 double capital = 0, juros=0, parcela=2; 
-                int periodo = 1;                 
-               try{ 
+             <%
+                                
+if (request.getParameter("capital")!= null && request.getParameter("juros")!=null && request.getParameter("mes") !=null){
+                               try{ 
                 capital = Double.parseDouble(request.getParameter("capital"));
                 juros = Double.parseDouble(request.getParameter("juros"));
                 juros= juros/100;
@@ -64,9 +66,7 @@
                 
                
                 
-               }catch(Exception e){
-                       
-               }
+              
                
                 double prestacaoR[] = new double[periodo];
                 double jurosR[] = new double[periodo];
@@ -95,13 +95,26 @@
             <% for(int i = 0; i < periodo; i++){
             %>
             <tr><td><%=i+1%></td><td><%=String.format("%.2f", prestacaoR[i])%></td><td><%=String.format("%.2f", jurosR[i])%></td><td><%=String.format("%.2f", parcela)%></td><td><%=String.format("%.2f", saldo[i])%></td></tr>
-                    
-            <%}%>
-                    
+                       
+            <% p = p + prestacaoR[i];
+               j = j + jurosR[i]; }%>
+            
+             
+            <tr><td>Total</td><td><%=String.format("%.2f",p)%></td><td><%=String.format("%.2f",j)%></td><td><%=0%></td><td><%=0%></td></tr>  
+
+                    <% }catch(Exception e){
+                      out.println("<h2 style=\"text-align:center\">Parâmetros Inválidos</h2>");   
+               }}%>
         </table>
               
           </div>
         </div>
+        <br>
+        <br>
+        <br>
+        
+        <footer class="footer">
             <%@include file="WEB-INF/jspf/footer.jspf" %> 
+            </footer>
     </body>
 </html>

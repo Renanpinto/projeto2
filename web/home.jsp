@@ -58,7 +58,7 @@
             <br/>
             <div class="row">
                 <div class="col-md-4 col-sm-6 ">
-                    <a class="icone" data-toggle="modal" href="#">
+                    <a class="icone"  href="amortizacao-constante.jsp">
                         <img class="img-fluid" src="img/icon1.jpg" alt="">
                     </a>
                     <div class="sistema">
@@ -82,7 +82,7 @@
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-6">
-                    <a class="icone" data-toggle="modal" href="#">
+                    <a class="icone"  href="amortizacao-americana.jsp">
                         <img class="img-fluid" src="img/icon2.jpg" alt="">
                     </a>
                     <div class="sistema">
@@ -104,7 +104,7 @@
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-6">
-                    <a class="icone" data-toggle="modal" href="#">
+                    <a class="icone" href="price.jsp">
                         <img class="img-fluid" src="img/icon3.jpg" alt="">
                     </a>
                     <div class="sistema">
@@ -146,7 +146,7 @@
                     <div class="team-member">
                         <img class="img-fluid rounded-circle" src="img/denis.jpg" alt="">
                         <h4>Denis Olmedo</h4>
-                        <p class="text-muted">RA: 129048161130--</p>
+                        <p class="text-muted">RA: 12904816113009</p>
                         <ul class="list-inline social-buttons">
                             <li class="list-inline-item">
                                 <a href="#">
@@ -170,7 +170,7 @@
                     <div class="team-member">
                         <img class="img-fluid mx-auto rounded-circle" src="img/diogo.jpg" alt="">
                         <h4>Diogo Pacheco</h4>
-                        <p class="text-muted">RA: 129048161130--</p>
+                        <p class="text-muted">RA: 12904816113012</p>
                         <ul class="list-inline social-buttons">
                             <li class="list-inline-item">
                                 <a href="#">
@@ -194,7 +194,7 @@
                     <div class="team-member">
                         <img class="img-fluid mx-auto rounded-circle" src="img/jeff.jpg" alt="">
                         <h4>Jefferson Costa</h4>
-                        <p class="text-muted">RA: 129048161130--</p>
+                        <p class="text-muted">RA: 12904816113019</p>
                         <ul class="list-inline social-buttons">
                             <li class="list-inline-item">
                                 <a href="#">

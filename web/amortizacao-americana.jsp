@@ -34,9 +34,11 @@
             Prazo total em meses:<input type="number" name="meses" required value="<%=meses%>"/> 
             <input type="submit" name="btEnviar" value="Enviar"/>
             <br>
+            <br>
         </form>
         <%
-            try{
+            if (request.getParameter("devedor")!= null && request.getParameter("juros")!=null && request.getParameter("meses") !=null){
+                try{
                 devedor = Double.parseDouble(request.getParameter("devedor"));
                 juros = Double.parseDouble(request.getParameter("juros"))*devedor/100;
                 meses = Integer.parseInt(request.getParameter("meses"));
@@ -51,11 +53,17 @@
             <tr><td><%=meses%></td><td>-</td><td><%=devedor%></td><td><%=juros%></td><td><%=juros+devedor%></td></tr>
             <tr><td>Total</td><td>-</td><td><%=devedor%></td><td><%=juros*meses%></td><td><%=juros*meses+devedor%></td></tr>
         </table>
-        <%}
-        catch (Exception ex) {%>
-        <%}%>
+        
+        <%}catch(Exception ex){
+                 out.println("<h2 style=\"text-align:center\">Parâmetros Inválidos</h2>");    
+               }}%>
         </div>
         </div>
+        <br>
+        <br>
+        <br>
+        <footer class="footer">
         <%@include file="WEB-INF/jspf/footer.jspf" %>
+        </footer>
     </body>
 </html>

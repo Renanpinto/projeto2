@@ -41,7 +41,7 @@
           <div class="jumbotron">
         
         
-        <% double capital = 0 ; double juros = 0; int mes = 2; 
+        <% double capital = 0, j=0, p=0 ; double juros = 0; int mes = 2; 
            double parcela = 0 ; %>
         <form>
             <div style="text-align: center">
@@ -93,14 +93,24 @@
             <%for(int x = 1 ; x <= mes ; x++){
             %>
             <tr><td><%=x%></td><td><%=String.format("%.2f", capitalR[x])%></td><td><%=String.format("%.2f", amortizacao[x])%></td><td><%=String.format("%.2f", jurosR[x])%></td><td><%=String.format("%.2f", parcela)%></td></tr>
+            <% p = p + capitalR[x];
+            j = j + jurosR[x]; }%>
             
+             
+            <tr><td>Total</td><td><%=0%></td><td><%=0%></td><td><%=String.format("%.2f",j)%></td><td><%=String.format("%.2f",parcela*mes)%></td></tr>  
+           
             
-            <%}}catch(Exception ex){
-                 out.println("<h2>Parametros Invalidos</h2>");    
+            <%}catch(Exception ex){
+                 out.println("<h2 style=\"text-align:center\">Parâmetros Inválidos</h2>");    
                }}%>
         </table>
           </div>
         </div>
-             <%@include file="WEB-INF/jspf/footer.jspf" %> 
+        <br>
+        <br>
+        <br>
+        <footer class="footer">
+             <%@include file="WEB-INF/jspf/footer.jspf" %>
+             </footer>
     </body>
 </html>

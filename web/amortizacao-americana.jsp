@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -46,12 +47,12 @@
         <hr/>
         <table class="table table-striped">
             <tr><th>Meses</th><th>Saldo Devedor</th><th>Amortização</th><th>Juros</th><th>Prestação</th></tr>
-            <tr><td>0</td><td><%=devedor%></td><td>-</td><td>-</td><td>-</td></tr>
+            <tr><td>0</td><td><%=new DecimalFormat("0.00").format(devedor)%></td><td>-</td><td>-</td><td>-</td></tr>
             <%for (int i=1;i<=meses-1;i++){%>
-                <tr><td><%=i%></td><td><%=devedor%></td><td>-</td><td><%=juros%></td><td><%=juros%></td></tr>
+                <tr><td><%=i%></td><td><%=new DecimalFormat("0.00").format(devedor)%></td><td>-</td><td><%=new DecimalFormat("0.00").format(juros)%></td><td><%=new DecimalFormat("0.00").format(juros)%></td></tr>
             <%}%>
-            <tr><td><%=meses%></td><td>-</td><td><%=devedor%></td><td><%=juros%></td><td><%=juros+devedor%></td></tr>
-            <tr><td>Total</td><td>-</td><td><%=devedor%></td><td><%=juros*meses%></td><td><%=juros*meses+devedor%></td></tr>
+            <tr><td><%=meses%></td><td>-</td><td><%=new DecimalFormat("0.00").format(devedor)%></td><td><%=new DecimalFormat("0.00").format(juros)%></td><td><%=new DecimalFormat("0.00").format(juros+devedor)%></td></tr>
+            <tr><td>Total</td><td>-</td><td><%=new DecimalFormat("0.00").format(devedor)%></td><td><%=new DecimalFormat("0.00").format(juros*meses)%></td><td><%=new DecimalFormat("0.00").format(juros*meses+devedor)%></td></tr>
         </table>
         
         <%}catch(Exception ex){

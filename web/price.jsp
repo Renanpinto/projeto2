@@ -36,7 +36,7 @@
             <br>
             <br>
             <br>
-            <h1 id="amortizacao">Amortização Price</h1>
+            <h1 id="amortizacao">Sistema Price</h1>
         
           <div class="jumbotron">
         

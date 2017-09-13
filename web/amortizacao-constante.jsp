@@ -71,8 +71,9 @@ if (request.getParameter("capital")!= null && request.getParameter("juros")!=nul
                 double prestacaoR[] = new double[periodo];
                 double jurosR[] = new double[periodo];
                 double saldo[] = new double[periodo];
+                double prestacaoTotal=0, jurosTotal=0;
                 saldo[0]=capital;
-                
+
                 for (int i = 0 ; i < periodo ; i++){
                     if(i==0){
                         jurosR[i] = saldo[i]*juros;
@@ -83,11 +84,11 @@ if (request.getParameter("capital")!= null && request.getParameter("juros")!=nul
                         prestacaoR[i] = parcela+jurosR[i];
                         saldo[i]=saldo[i-1]-parcela;
                     }
-                    
-                    
+                    prestacaoTotal = prestacaoTotal + prestacaoR[i];
+                    jurosTotal = jurosTotal + jurosR[i];
                 }  
         %>
-            
+           
         <table class="table table-striped">
             <tr><th>Periodo</th><th>Prestação</th><th>Juros</th><th>Amortização</th><th>Saldo Devedor</th></tr>
             <tr><td>0</td><td>   </td><td>   </td><td>   </td><td><%=capital%></td></tr>
